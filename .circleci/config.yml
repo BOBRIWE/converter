@@ -13,10 +13,9 @@ jobs:
             /usr/bin/pip2 install docker-compose
             docker-compose --version
       - run:
-          name: Start Container
+          name: Start Container and Test
           command: |
-            docker-compose up -d
-            docker-compose ps
+            docker-compose up
 # jobs:
 #   js:
 #     docker: # use the docker executor type; machine and macos executors are also supported
