@@ -2,7 +2,7 @@ version: '3'
 services:
   server:
     build: ./
-    command: node app/server.js &
+    command: node app/server.js
     ports:
       - "3000:3000"
   js:
@@ -10,6 +10,8 @@ services:
     command: npm test
     volumes:
       - .:/app
+    depends_on:
+      - server
   php:
     build: ./php
     command: ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest

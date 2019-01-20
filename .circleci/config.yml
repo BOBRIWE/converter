@@ -13,9 +13,14 @@ jobs:
             /usr/bin/pip2 install docker-compose
             docker-compose --version
       - run:
-          name: Start Container and Test
+          name: Start Container
           command: |
-            docker-compose up
+            docker-compose up -d server
+      - run :
+          name: Running tests...
+          command: |
+            docker-compose up js
+            docker-compose up php
       - run:
           name: STOPPING
           command: |
