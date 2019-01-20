@@ -16,6 +16,7 @@ jobs:
           name: Start Container and Test
           command: |
             docker-compose up
+            docker-compose down
 # jobs:
 #   js:
 #     docker: # use the docker executor type; machine and macos executors are also supported

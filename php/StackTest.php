@@ -3,6 +3,11 @@ use PHPUnit\Framework\TestCase;
 
 class StackTest extends TestCase
 {
+    public function setUp()
+    {
+        
+    }
+
     public function testPushAndPop()
     {
         $stack = [];
@@ -16,7 +21,7 @@ class StackTest extends TestCase
         $this->assertEquals(0, count($stack));
     }
 
-    public function failingTest()
+    public function testFailing()
     {
         $this->assertEquals(0, 1);
     }

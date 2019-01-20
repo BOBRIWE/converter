@@ -13,6 +13,6 @@ services:
       - .:/app
   php:
     build: ./php
-    command: phpunit ./StackTest.php
+    command: ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest
     volumes:
       - ".:/php"
