@@ -1,4 +1,13 @@
-FROM phpunit/phpunit
-COPY /php /usr/src/myapp
-WORKDIR /usr/src/myapp
-CMD [ "php", "./StackTest.php" ]
+FROM circleci/node
+
+WORKDIR /my-app
+
+COPY package.json .
+
+RUN sudo npm install
+
+COPY . .
+
+RUN ls
+
+EXPOSE 3000 

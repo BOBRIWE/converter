@@ -1,0 +1,18 @@
+version: '3'
+services:
+  server:
+    image: node
+    build: ./
+    command: node app/server.js
+    ports:
+      - "3000:3000"
+  js:
+    build: ./
+    command: npm test
+    volumes:
+      - .:/app
+  php:
+    build: ./php
+    command: phpunit ./StackTest.php
+    volumes:
+      - ".:/php"

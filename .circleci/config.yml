@@ -1,25 +1,43 @@
 version: 2
 jobs:
-  js:
-    docker: # use the docker executor type; machine and macos executors are also supported
-      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
-    steps:
-      - checkout # check out the code in the project directory
-      - run: "npm test" # run the `echo` command
-  php:
+  build:
     docker:
-      - image: circleci/php
+      - image: docker:18.03.0-ce-git
     steps:
       - checkout
-      - run: wget https://phar.phpunit.de/phpunit-6.5.phar
-      - run: chmod +x phpunit-6.5.phar
-      - run: sudo mv phpunit-6.5.phar /usr/local/bin/phpunit
-      - run: phpunit --version
-      - run: phpunit ./php/StackTest.php
+      - setup_remote_docker
+      - run:
+          name: Install docker-compose
+          command: |
+            apk --update add py2-pip
+            /usr/bin/pip2 install docker-compose
+            docker-compose --version
+      - run:
+          name: Start Container
+          command: |
+            docker-compose up -d
+            docker-compose ps
+# jobs:
+#   js:
+#     docker: # use the docker executor type; machine and macos executors are also supported
+#       - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
+#     steps:
+#       - checkout # check out the code in the project directory
+#       - run: npm test # run the `echo` command
+#   php:
+#     docker:
+#       - image: circleci/php
+#     steps:
+#       - checkout
+#       - run: wget https://phar.phpunit.de/phpunit-6.5.phar
+#       - run: chmod +x phpunit-6.5.phar
+#       - run: sudo mv phpunit-6.5.phar /usr/local/bin/phpunit
+#       - run: phpunit --version
+#       - run: phpunit ./php/StackTest.php
 
-workflows:
-  version: 2
-  test_all:
-    jobs:
-      - js
-      - php
+# workflows:
+#   version: 2
+#   test_all:
+#     jobs:
+#       - js
+#       - php

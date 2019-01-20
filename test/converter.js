@@ -32,9 +32,9 @@ describe("Color Code Converter API", function() {
 
     describe("RGB to Hex conversion", function() {
   
-      var url = "http://localhost:3000/rgbToHex?red=255&green=255&blue=255";
+      var url = "http://192.168.99.100:3000/rgbToHex?red=255&green=255&blue=255";
   
-      it("returns status 200", function(done) {
+      it("returns status 200 with toolbox IP", function(done) {
         request(url, function(error, response, body) {
           expect(response.statusCode).to.equal(200);
           done();

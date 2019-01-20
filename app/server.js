@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var converter = require("./converter");
+var converter = require("./converter.js");
 
 app.get("/rgbToHex", function(req, res) {
   var red   = parseInt(req.query.red, 10);
@@ -20,4 +20,4 @@ app.get("/hexToRgb", function(req, res) {
   res.send(JSON.stringify(rgb));
 });
 
-app.listen(3000);
+app.listen(3000, () => console.log('Server running...'));
