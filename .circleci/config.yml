@@ -16,6 +16,9 @@ jobs:
           name: Start Container and Test
           command: |
             docker-compose up
+      - run:
+          name: STOPPING
+          command: |
             docker-compose down
 # jobs:
 #   js:
