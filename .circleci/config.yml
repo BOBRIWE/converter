@@ -15,11 +15,12 @@ jobs:
       - run:
           name: Start Container
           command: |
+            docker-compose build
             docker-compose up -d server
       - run :
           name: Running tests...
           command: |
-            docker-compose up js
+            docker-compose up  js
             docker-compose up php
       - run:
           name: STOPPING
