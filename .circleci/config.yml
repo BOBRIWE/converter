@@ -15,13 +15,13 @@ jobs:
       - run:
           name: Start Container
           command: |
-            docker-compose up -d server
+            docker-compose up -d
       - run :
           name: Running tests...
           command: |
             set -e
-            docker-compose up js
-            docker-compose up php
+            docker exec js npm test
+            docker exec php ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest
       - run:
           name: STOPPING
           command: |
