@@ -3,7 +3,7 @@ services:
   server:
     image: node
     build: ./
-    command: node app/server.js
+    command: node app/server.js -d
     ports:
       - "3000:3000"
   js:
