@@ -35,7 +35,7 @@ jobs:
             MOCHA_FILE: ~/junit/test-results.xml
           command: |
             ls
-            ./node_modules/.bin/mocha test --reporter
+            ./node_modules/.bin/mocha test
           when: always
       - store_test_results:
           path: ~/junit
