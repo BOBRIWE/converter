@@ -32,11 +32,11 @@ jobs:
       - run: mkdir ~/junit
       - run:
           command: |
-            ./node_modules/.bin/mocha --reporter spec
             ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
           environment:
             MOCHA_FILE: ~/junit/test-results.xml
           when: always
+      - run: ./node_modules/.bin/mocha --reporter specs
       - store_test_results:
           path: ~/junit
       - store_artifacts:
