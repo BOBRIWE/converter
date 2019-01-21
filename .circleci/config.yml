@@ -18,7 +18,7 @@ jobs:
             mkdir -p ~/phpunit
             phpunit --log-junit ~/phpunit/junit.xml tests
       - store_test_results:
-        path: ~/phpunit
+          path: ~/phpunit
       - store_artifacts:
           path: ~/phpunit
       - run:
