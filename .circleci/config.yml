@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run: 
           command: |
-              npm install
+              yarn install
               mkdir ~/junit
               # ./node_modules/.bin/forever start app/server.js
               ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
