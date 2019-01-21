@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  php:
     docker:
       - image: phpunit/phpunit
     steps:
@@ -14,7 +14,7 @@ jobs:
           path: ~/phpunit
       - store_artifacts:
           path: ~/phpunit
-  build:
+  js:
     docker:
       - image: circleci/node
     steps:
@@ -26,6 +26,12 @@ jobs:
           when: always
       - store_artifacts:
           path: ./reports/mocha/test-results.xml
+workflows:
+  version: 2
+  js_and_php:
+    jobs:
+      - js
+      - php
     # docker:
     #   - image: docker:18.03.0-ce-git
     # steps:
