@@ -2,10 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: phpunit/phpunit
+      - image: circleci/php
     steps:
       - checkout
-      - run: ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest
+      - run: |
+        sudo composer install
+        ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest
     # docker:
     #   - image: docker:18.03.0-ce-git
     # steps:
