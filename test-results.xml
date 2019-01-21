@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.003" tests="6" failures="4">
+  <testsuite name="Root Suite" timestamp="2019-01-21T13:36:58" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Color Code Converter" timestamp="2019-01-21T13:36:58" tests="0" file="W:\GITHUB\converter\test\converter.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="RGB to Hex conversion" timestamp="2019-01-21T13:36:58" tests="1" file="W:\GITHUB\converter\test\converter.js" failures="0" time="0.001">
+    <testcase name="Color Code Converter RGB to Hex conversion converts the basic colors" time="0.001" classname="converts the basic colors">
+    </testcase>
+  </testsuite>
+  <testsuite name="Hex to RGB conversion" timestamp="2019-01-21T13:36:58" tests="1" file="W:\GITHUB\converter\test\converter.js" failures="0" time="0.002">
+    <testcase name="Color Code Converter Hex to RGB conversion converts the basic colors" time="0.002" classname="converts the basic colors">
+    </testcase>
+  </testsuite>
+  <testsuite name="Color Code Converter API" timestamp="2019-01-21T13:36:58" tests="0" file="W:\GITHUB\converter\test\converter.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="RGB to Hex conversion" timestamp="2019-01-21T13:36:58" tests="2" file="W:\GITHUB\converter\test\converter.js" failures="2" time="0">
+    <testcase name="Color Code Converter API RGB to Hex conversion returns status 200 with toolbox IP" time="0" classname="returns status 200 with toolbox IP">
+      <failure message="Cannot read property &apos;statusCode&apos; of undefined" type="TypeError"><![CDATA[TypeError: Cannot read property 'statusCode' of undefined
+    at Request._callback (test\converter.js:39:27)
+    at self.callback (node_modules\request\request.js:185:22)
+    at Request.onRequestError (node_modules\request\request.js:881:8)
+    at Socket.socketErrorListener (_http_client.js:392:9)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+    at process._tickCallback (internal/process/next_tick.js:63:19)]]></failure>
+    </testcase>
+    <testcase name="Color Code Converter API RGB to Hex conversion returns the color in hex" time="0" classname="returns the color in hex">
+      <failure message="expected undefined to equal &apos;ffffff&apos;" type="AssertionError"><![CDATA[AssertionError: expected undefined to equal 'ffffff'
+    at Request._callback (test\converter.js:46:27)
+    at self.callback (node_modules\request\request.js:185:22)
+    at Request.onRequestError (node_modules\request\request.js:881:8)
+    at Socket.socketErrorListener (_http_client.js:392:9)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+    at process._tickCallback (internal/process/next_tick.js:63:19)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Hex to RGB conversion" timestamp="2019-01-21T13:37:00" tests="2" file="W:\GITHUB\converter\test\converter.js" failures="2" time="0">
+    <testcase name="Color Code Converter API Hex to RGB conversion returns status 200" time="0" classname="returns status 200">
+      <failure message="Cannot read property &apos;statusCode&apos; of undefined" type="TypeError"><![CDATA[TypeError: Cannot read property 'statusCode' of undefined
+    at Request._callback (test\converter.js:58:27)
+    at self.callback (node_modules\request\request.js:185:22)
+    at Request.onRequestError (node_modules\request\request.js:881:8)
+    at Socket.socketErrorListener (_http_client.js:392:9)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+    at process._tickCallback (internal/process/next_tick.js:63:19)]]></failure>
+    </testcase>
+    <testcase name="Color Code Converter API Hex to RGB conversion returns the color in RGB" time="0" classname="returns the color in RGB">
+      <failure message="expected undefined to equal &apos;[0,255,0]&apos;" type="AssertionError"><![CDATA[AssertionError: expected undefined to equal '[0,255,0]'
+    at Request._callback (test\converter.js:65:27)
+    at self.callback (node_modules\request\request.js:185:22)
+    at Request.onRequestError (node_modules\request\request.js:881:8)
+    at Socket.socketErrorListener (_http_client.js:392:9)
+    at emitErrorNT (internal/streams/destroy.js:82:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)
+    at process._tickCallback (internal/process/next_tick.js:63:19)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

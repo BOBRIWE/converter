@@ -33,7 +33,7 @@ jobs:
       - run:
           command: |
             ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
-            cp test-results.xml ~/junit
+            cp test-results.xml ~/junit/
           when: always
       - store_test_results:
           path: ~/junit
