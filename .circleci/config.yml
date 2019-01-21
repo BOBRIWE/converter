@@ -13,10 +13,17 @@ jobs:
             /usr/bin/pip2 install docker-compose
             docker-compose --version
       - run:
+          name: PHPUnit Install
+          command: |
+            wget https://phar.phpunit.de/phpunit-6.5.phar
+            chmod +x phpunit-6.5.phar
+            sudo mv phpunit-6.5.phar /usr/local/bin/phpunit
+            phpunit --version
+      - run:
           name: PHP
           command: |
             mkdir -p ~/phpunit
-            ./vendor/bin/phpunit --log-junit ~/phpunit/junit.xml tests
+            phpunit --log-junit ~/phpunit/junit.xml tests
       - store_test_results:
           path: ~/phpunit
       - store_artifacts:
