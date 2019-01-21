@@ -13,6 +13,15 @@ jobs:
             /usr/bin/pip2 install docker-compose
             docker-compose --version
       - run:
+          name: PHP
+          command: |
+            mkdir -p ~/phpunit
+            phpunit --log-junit ~/phpunit/junit.xml tests
+      - store_test_results:
+        path: ~/phpunit
+      - store_artifacts:
+          path: ~/phpunit
+      - run:
           name: Start Container
           command: |
             docker-compose up -d server
