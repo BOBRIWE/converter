@@ -1,4 +1,7 @@
 version: 2
+machine:
+  environment:
+      MOCHA_FILE: "$CIRCLE_TEST_REPORTS/test-results.xml"
 jobs:
   php:
     docker:
@@ -19,23 +22,15 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - run: mkdir ~/junit
       - run: 
           command: |
-            npm install forever
-            npm install
-            ./node_modules/.bin/forever start app/server.js
-            ./node_modules/.bin/mocha --reporter spec
+              npm install forever
+              npm install mocha-circleci-reporter
+              npm install
+              ./node_modules/.bin/forever start app/server.js
+              node_modules/.bin/mocha --reporter ./node_modules/.bin/mocha-circleci-reporter test/*.js
           when: always
-      - run:
-          command: ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
-          environment:
-            MOCHA_FILE: ~/junit/test-results.xml
-          when: always
-      - store_test_results:
-          path: ~/junit
-      - store_artifacts:
-          path: ~/junit
+
 workflows:
   version: 2
   js_and_php:
