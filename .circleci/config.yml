@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: docker:18.03.0-ce-git
-      - image: phpunit
     steps:
       - checkout
       - setup_remote_docker
@@ -17,7 +16,7 @@ jobs:
           name: PHP
           command: |
             mkdir -p ~/phpunit
-            phpunit --log-junit ~/phpunit/junit.xml tests
+            ./vendor/bin/phpunit --log-junit ~/phpunit/junit.xml tests
       - store_test_results:
           path: ~/phpunit
       - store_artifacts:
