@@ -24,15 +24,10 @@ jobs:
       - checkout
       - run: 
           command: |
-              npm install forever
-              npm install mocha-junit-reporter --save-dev
               npm install
+              mkdir ~/junit
               # ./node_modules/.bin/forever start app/server.js
-          when: always
-      - run: mkdir ~/junit
-      - run:
-          command: |
-            ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
+              ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
           environment:
             MOCHA_FILE: ~/junit/test-results.xml
           when: always
