@@ -28,7 +28,7 @@ jobs:
           environment:
             MOCHA_FILE: ~/junit/test-results.xml
           when: always
-      -run: ls
+      - run: ls
       - store_test_results:
           path: ~/junit
       - store_artifacts:
