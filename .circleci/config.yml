@@ -1,7 +1,4 @@
 version: 2
-machine:
-  environment:
-      MOCHA_FILE: "$CIRCLE_TEST_REPORTS/test-results.xml"
 jobs:
   php:
     docker:
@@ -27,7 +24,7 @@ jobs:
               yarn install
               mkdir ~/junit
               # ./node_modules/.bin/forever start app/server.js
-              ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
+              yarn mocha test --reporter mocha-junit-reporter
           environment:
             MOCHA_FILE: ~/junit/test-results.xml
           when: always

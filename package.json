@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha test/*.js --reporter mocha-junit-reporter",
+    "server": "./node_modules/.bin/forever start app/server.js"
   },
   "author": "",
   "license": "ISC",
