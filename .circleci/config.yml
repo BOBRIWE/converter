@@ -19,6 +19,7 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
+      - run: mkdir ~/junit
       - run: 
           command: |
             npm install forever
@@ -26,8 +27,15 @@ jobs:
             ./node_modules/.bin/forever start app/server.js
             ./node_modules/.bin/mocha --reporter spec
           when: always
+      - run:
+          command: mocha test --reporter mocha-junit-reporter
+          environment:
+            MOCHA_FILE: ~/junit/test-results.xml
+          when: always
+      - store_test_results:
+          path: ~/junit
       - store_artifacts:
-          path: ./reports/mocha/test-results.xml
+          path: ~/junit
 workflows:
   version: 2
   js_and_php:

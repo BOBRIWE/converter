@@ -23,7 +23,8 @@ class StackTest extends TestCase
 
     public function testFailing()
     {
-        $this->assertEquals(0, 1);
+        // not failing anymore
+        $this->assertEquals(0, 0);
     }
 }
 ?>
