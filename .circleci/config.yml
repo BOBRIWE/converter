@@ -23,7 +23,7 @@ jobs:
           command: |
               yarn install
               mkdir ~/junit
-              # ./node_modules/.bin/forever start app/server.js
+              ./node_modules/.bin/forever start app/server.js
               yarn mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=~/junit/test-results.xml
           when: always
       - run: 
