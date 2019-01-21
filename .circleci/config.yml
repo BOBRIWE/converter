@@ -21,8 +21,9 @@ jobs:
       - checkout
       - run: 
           command: |
+            npm install forever
             npm install
-            node app/server.js
+            forever start app/server.js
             ./node_modules/.bin/mocha --reporter spec
           when: always
       - store_artifacts:
