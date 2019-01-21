@@ -25,10 +25,10 @@ jobs:
       - run: 
           command: |
               npm install forever
-              npm install mocha-circleci-reporter
+              npm install mocha-circleci-reporter --save-dev
               npm install
               ./node_modules/.bin/forever start app/server.js
-              node_modules/.bin/mocha --reporter ./node_modules/.bin/mocha-circleci-reporter test/*.js
+              node_modules/.bin/mocha --reporter mocha-circleci-reporter test/*.js
           when: always
 
 workflows:
