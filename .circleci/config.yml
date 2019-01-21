@@ -23,7 +23,7 @@ jobs:
           command: |
             npm install forever
             npm install
-            forever start app/server.js
+            npm forever start app/server.js
             ./node_modules/.bin/mocha --reporter spec
           when: always
       - store_artifacts:
