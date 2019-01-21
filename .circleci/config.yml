@@ -5,9 +5,15 @@ jobs:
       - image: phpunit/phpunit
     steps:
       - checkout
-      - run: |
-          ls
-          phpunit php/StackTest
+      - run: 
+          command: |
+            mkdir -p ~/phpunit
+            phpunit --log-junit ~/phpunit/junit.xml php
+          when: always
+      - store_test_results:
+          path: ~/phpunit
+      - store_artifacts:
+          path: ~/phpunit
     # docker:
     #   - image: docker:18.03.0-ce-git
     # steps:
