@@ -21,7 +21,7 @@ jobs:
     docker:
       - image: circleci/node
     steps:
-      - checkout
+      
       - run: 
           command: |
               npm install forever
@@ -30,16 +30,17 @@ jobs:
               # ./node_modules/.bin/forever start app/server.js
           when: always
       - run: mkdir ~/junit
+      - checkout
       - run:
           command: |
             ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
-            cp test-results.xml ~/junit/
+          environment:
+            MOCHA_FILE: ~/junit/test-results.xml
           when: always
       - store_test_results:
           path: ~/junit
       - store_artifacts:
           path: ~/junit
-
 workflows:
   version: 2
   js_and_php:
