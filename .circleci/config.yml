@@ -21,6 +21,7 @@ jobs:
       - checkout
       - run: 
           command: |
+              set +e
               yarn install
               mkdir ~/junit
               # ./node_modules/.bin/forever start app/server.js
