@@ -33,7 +33,9 @@ jobs:
       - run: mkdir ~/junit/test-results.xml
       - run:
           command: |
-            ./node_modules/.bin/mocha test --reporter mocha-junit-reporter mochaFile=~/junit/test-results.xml
+            ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
+            ls
+            ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
           environment:
             MOCHA_FILE: ~/junit/test-results.xml
           when: always
