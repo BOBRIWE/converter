@@ -25,11 +25,20 @@ jobs:
       - run: 
           command: |
               npm install forever
-              npm install mocha-circleci-reporter --save-dev
+              npm install mocha-junit-reporter --save-dev
               npm install
               ./node_modules/.bin/forever start app/server.js
-              node_modules/.bin/mocha --reporter mocha-circleci-reporter test/*.js
           when: always
+      - run: mkdir ~/junit
+      - run:
+          command: mocha test --reporter mocha-junit-reporter
+          environment:
+            MOCHA_FILE: ~/junit/test-results.xml
+          when: always
+      - store_test_results:
+          path: ~/junit
+      - store_artifacts:
+          path: ~/junit
 
 workflows:
   version: 2
