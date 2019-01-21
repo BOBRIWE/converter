@@ -2,51 +2,35 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:18.03.0-ce-git
+      - image: phpunit/phpunit
     steps:
       - checkout
-      - setup_remote_docker
-      - run:
-          name: Install docker-compose
-          command: |
-            apk --update add py2-pip
-            /usr/bin/pip2 install docker-compose
-            docker-compose --version
-      - run:
-          name: PHPUnit Install
-          command: |
-            apk update
-            chmod +x /usr/bin/apt-get
-            apt-get install php
-            apk add ca-certificates wget
-            update-ca-certificates
-            wget https://phar.phpunit.de/phpunit-6.5.phar
-            chmod +x phpunit-6.5.phar
-            mv phpunit-6.5.phar /usr/local/bin/phpunit
-            phpunit --version
-      - run:
-          name: PHP
-          command: |
-            mkdir -p ~/phpunit
-            phpunit --log-junit ~/phpunit/junit.xml tests
-      - store_test_results:
-          path: ~/phpunit
-      - store_artifacts:
-          path: ~/phpunit
-      - run:
-          name: Start Container
-          command: |
-            docker-compose up -d server
-      - run :
-          name: Running tests...
-          command: |
-            set -e
-            docker-compose up js
-            docker-compose up php
-      - run:
-          name: STOPPING
-          command: |
-            docker-compose down
+      - run: ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest
+    # docker:
+    #   - image: docker:18.03.0-ce-git
+    # steps:
+    #   - checkout
+    #   - setup_remote_docker
+    #   - run:
+    #       name: Install docker-compose
+    #       command: |
+    #         apk --update add py2-pip
+    #         /usr/bin/pip2 install docker-compose
+    #         docker-compose --version
+    #   - run:
+    #       name: Start Container
+    #       command: |
+    #         docker-compose up -d server
+    #   - run :
+    #       name: Running tests...
+    #       command: |
+    #         set -e
+    #         docker-compose up js
+    #         docker-compose up php
+    #   - run:
+    #       name: STOPPING
+    #       command: |
+    #         docker-compose down
 # jobs:
 #   js:
 #     docker: # use the docker executor type; machine and macos executors are also supported
