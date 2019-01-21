@@ -21,12 +21,14 @@ jobs:
       - checkout
       - run: 
           command: |
-              set -e
               yarn install
               mkdir ~/junit
               # ./node_modules/.bin/forever start app/server.js
-              yarn mocha test --reporter mocha-junit-reporter mochaFile=~/junit/test-results.xml
+              yarn mocha test --reporter mocha-junit-reporter
+          environment:
+            MOCHA_FILE: ~/junit/test-results.xml
           when: always
+      -run: ls
       - store_test_results:
           path: ~/junit
       - store_artifacts:
