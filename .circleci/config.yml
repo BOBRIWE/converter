@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run: |
-        sudo composer install
-        ./vendor/bin/phpunit --bootstrap vendor/autoload.php StackTest
+        composer install
+        phpunit --bootstrap vendor/autoload.php php/StackTest
     # docker:
     #   - image: docker:18.03.0-ce-git
     # steps:
