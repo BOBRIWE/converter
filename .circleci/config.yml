@@ -15,10 +15,10 @@ jobs:
       - run:
           name: PHPUnit Install
           command: |
+            /usr/bin/apt-get install php
             apk update
             apk add ca-certificates wget
             update-ca-certificates
-            /usr/bin/apt-get install php
             wget https://phar.phpunit.de/phpunit-6.5.phar
             chmod +x phpunit-6.5.phar
             mv phpunit-6.5.phar /usr/local/bin/phpunit
