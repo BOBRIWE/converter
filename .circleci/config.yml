@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: |
           ls
-          phpunit --bootstrap vendor/autoload.php php/StackTest
+          phpunit php/StackTest
     # docker:
     #   - image: docker:18.03.0-ce-git
     # steps:
