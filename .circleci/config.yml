@@ -30,6 +30,7 @@ jobs:
               # ./node_modules/.bin/forever start app/server.js
           when: always
       - run: mkdir ~/junit
+      - run: mkdir ~/junit/test-results.xml
       - run:
           command: |
             ./node_modules/.bin/mocha test --reporter mocha-junit-reporter mochaFile=~/junit/test-results.xml
